@@ -25,6 +25,16 @@ def test_reserve_book(customer_client):
     assert book.id_book == json.loads(response.content).get('id_book')
 
 
+def test_reserve_book_before_3_days(customer_client):
+    date_booking = datetime.today() - timedelta(days=2)
+    book = BookFactory(date_booking=date_booking)
+    response = customer_client.get(f"/v1/books/{book.id_book}/reserve/", content_type="application/json")
+
+    # THEN
+    assert response.status_code == status.HTTP_400_BAD_REQUEST
+    assert "This book it's already reserved less than 3 days" == json.loads(response.content)[0]
+
+
 def test_find_by_client_17_days_delay(customer_client):
     book = BookFactory()
     client = ClientFactory()

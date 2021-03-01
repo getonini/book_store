@@ -30,7 +30,6 @@ $ make create-venv
 
 - Talvez seja necessário instalar:
   - python3 -m pip install djangorestframework
-  - python3 -m pip install djangorestframework
   - python3 -m pip install django-filter
   - python3 -m pip install drf-yasg
   - python3 -m pip install PyMySQ
