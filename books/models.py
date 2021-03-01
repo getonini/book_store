@@ -64,7 +64,7 @@ class Book(DateTimeDBOps):
 
 class Borrow(models.Model):
     id_borrow = models.BigAutoField(primary_key=True, db_column='id_emprestimo')
-    date_borrow = models.DateTimeField(db_column='dt_emprestimo', null=True, blank=True, auto_now_add=True)
+    date_borrow = models.DateTimeField(db_column='dt_emprestimo', null=True, blank=True)
     date_devolution = models.DateTimeField(db_column='dt_devolucao', null=True, blank=True)
 
     book = models.ForeignKey(Book, db_column='id_livro', null=False, related_name='borrow_set',

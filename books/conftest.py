@@ -2,10 +2,11 @@ import pytest
 from django.contrib.auth.models import User
 from pytest_factoryboy import register
 
-from books.tests.factories import BookFactory, AuthorFactory
+from books.tests.factories import BookFactory, AuthorFactory, ClientFactory
 
 register(AuthorFactory)
 register(BookFactory)
+register(ClientFactory)
 
 
 @pytest.fixture
