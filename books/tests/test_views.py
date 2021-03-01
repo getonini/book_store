@@ -16,6 +16,15 @@ def test_select_books(customer_client):
     assert book.id_book == json.loads(response.content)[0].get('id_book')
 
 
+def test_reserve_book(customer_client):
+    book = BookFactory()
+    response = customer_client.get(f"/v1/books/{book.id_book}/reserve/", content_type="application/json")
+
+    # THEN
+    assert response.status_code == status.HTTP_200_OK
+    assert book.id_book == json.loads(response.content).get('id_book')
+
+
 def test_find_by_client_17_days_delay(customer_client):
     book = BookFactory()
     client = ClientFactory()
