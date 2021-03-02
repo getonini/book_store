@@ -1,4 +1,5 @@
 import pytest
+from django.conf import settings
 from django.contrib.auth.models import User
 from pytest_factoryboy import register
 
@@ -22,4 +23,5 @@ def customer_client(db, admin_user):
 
 def _create_client():
     from django.test.client import Client
+    settings.TIME_ZONE = 'UTC'
     return Client()
